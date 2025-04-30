@@ -1,0 +1,5 @@
+@EndUserText.label: 'Incidente Service Definition'
+define service Z_SD_INCT_5469 {
+  expose Z_C_INCT_5469          as Indicente;
+  expose Z_C_HISTORIAL_INC_5469 as historial;
+}

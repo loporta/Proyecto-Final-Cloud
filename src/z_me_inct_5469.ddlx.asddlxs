@@ -1,0 +1,101 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo:{  typeName: 'Incidente',
+                     typeNamePlural: 'Incidentes',
+                     title:{ type: #STANDARD,
+                             value: 'Title'}
+                       },
+        presentationVariant: [{ sortOrder: [{by: 'IncidentId',
+                                direction: #ASC }],
+                                visualizations: [{ type: #AS_LINEITEM }]}]
+                                 }
+
+annotate entity Z_C_INCT_5469 with
+{
+  @UI.facet: [{ id: 'Detalle_Indicente',
+                purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE,
+                label: 'Detalle Indicente',
+                position: 10}]
+
+  @UI: { lineItem:  [{ position: 10,
+                    importance: #HIGH,
+                    label: '' },
+                  { type: #FOR_ACTION,
+                    dataAction: 'Cambiar_Estado',
+                    label: 'Cambiar Estado',
+                    position: 10 }],
+        selectionField: [{position: 10 }],
+
+        identification: [{ position: 10 },
+                         { type: #FOR_ACTION,
+                           dataAction: 'Cambiar_Estado',
+                           label: 'Cambiar Estado',
+                           position: 10 }]}
+  IncUuid;
+
+  @UI: { lineItem: [{ position: 20,
+                   importance: #HIGH,
+                   label: 'Número de Incidente' }],
+        identification: [{ position: 20 }],
+        selectionField: [{position: 20 }]  }
+  IncidentId;
+
+  @UI: { lineItem: [{ position: 30,
+                 importance: #HIGH,
+                 label: 'Titulo' }],
+                 identification: [{ position: 30 }] }
+  Title;
+
+  @UI: { lineItem: [{ position: 40,
+               importance: #HIGH,
+               label: 'Descripción' }],
+                identification: [{ position: 40 }],
+                 selectionField: [{position: 30 }] }
+
+  Description;
+
+  @UI: { lineItem: [{ position: 50,
+               importance: #HIGH,
+               label: 'Estado' }],
+                identification: [{ position: 50 }],
+                selectionField: [{position: 40 }]  }
+  Status;
+
+  @UI: { lineItem: [{ position: 60,
+               importance: #HIGH,
+               label: 'Prioridad' }],
+                identification: [{ position: 60 }],
+                selectionField: [{position: 50 }]  }
+  Priority;
+
+
+  @UI: { lineItem: [{ position: 70,
+             importance: #MEDIUM,
+             label: 'Fecha de Creación' }],
+                identification: [{ position: 70 }],
+                selectionField: [{position: 60 }]  }
+  CreationDate;
+
+  @UI: { lineItem: [{ position: 80,
+             importance: #MEDIUM,
+             label: 'Fecha Modificación' }],
+                identification: [{ position: 80 }],
+                selectionField: [{position: 70 }]  }
+
+  ChangedDate;
+
+  @UI.hidden: true
+  LocalCreatedBy;
+
+  @UI.hidden: true
+  LocalCreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  LastChangedAt;
+}
