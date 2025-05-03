@@ -1,0 +1,72 @@
+managed implementation in class zbp_r_inct_5469 unique;
+strict ( 2 );
+//with draft;
+define behavior for Z_R_INCT_5469 alias _inct
+persistent table zdt_inct_5469
+//draft table
+lock master
+//total etag LocalLastChangedAt
+etag master LastChangedAt
+authorization master ( global, instance )
+
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) IncUuid;
+  field ( readonly ) IncidentId, Status, LocalCreatedBy, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
+  field ( mandatory ) Title, Description, Priority;
+
+
+  action ( features : instance, authorization : update ) Cambiar_Estado parameter ZCDS_POP_UP result [1] $self;
+
+  determination setStatus on save { create; }
+  determination setModify on modify { create; }
+  association _history { create; }
+  mapping for zdt_inct_5469
+    {
+      IncUuid            = inc_uuid;
+      IncidentId         = incident_id;
+      Title              = title;
+      Description        = description;
+      Status             = status;
+      Priority           = priority;
+      CreationDate       = creation_date;
+      ChangedDate        = changed_date;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}
+
+define behavior for ZC_HISTOTIAL_INC_5469 alias Historial
+persistent table zdt_inct_h_5469
+lock dependent by _inct
+
+etag master LastChangedAt
+authorization dependent by _inct
+
+{
+  update;
+  delete;
+  field ( numbering : managed, readonly ) HisUuid;
+  field ( readonly ) IncUuid, LocalCreatedBy, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
+  association _inct;
+  mapping for zdt_inct_h_5469
+    {
+      HisUuid            = his_uuid;
+      IncUuid            = inc_uuid;
+      HisId              = his_id;
+      PreviousStatus     = previous_status;
+      NewStatus          = new_status;
+      Text               = text;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}
