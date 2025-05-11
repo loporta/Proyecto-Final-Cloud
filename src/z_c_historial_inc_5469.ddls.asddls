@@ -8,6 +8,7 @@ define view entity Z_C_HISTORIAL_INC_5469
   as projection on ZC_HISTOTIAL_INC_5469
 
 {
+@UI.lineItem: [{ position: 10, label: 'UUID', importance: #LOW }]
   key HisUuid,
       IncUuid,
 

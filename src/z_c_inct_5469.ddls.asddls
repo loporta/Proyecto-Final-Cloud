@@ -7,14 +7,20 @@ define root view entity Z_C_INCT_5469
   provider contract transactional_query
   as projection on Z_R_INCT_5469
 {
+
+
+      @UI.lineItem: [{ position: 10, label: 'UUID', importance: #LOW }]
   key IncUuid,
+
+
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.8
       @Search.ranking: #MEDIUM
       @ObjectModel.text.element: [ 'Title' ]
       @EndUserText.label: 'Id Indicente'
-
+      @UI.lineItem: [{ position: 20, label: 'IncidentId', importance: #HIGH }]
       IncidentId,
+
       @EndUserText.label: 'Titulo'
       Title,
       @Search.defaultSearchElement: true
@@ -47,7 +53,7 @@ define root view entity Z_C_INCT_5469
         },
         label: 'Prioridad'
         }]
-        Priority,
+      Priority,
 
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.8

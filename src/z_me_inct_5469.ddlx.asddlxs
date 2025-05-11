@@ -17,20 +17,12 @@ annotate entity Z_C_INCT_5469 with
                 label: 'Detalle Indicente',
                 position: 10}]
 
-  @UI: { lineItem:  [{ position: 10,
-                    importance: #HIGH,
-                    label: '' },
-                  { type: #FOR_ACTION,
-                    dataAction: 'Cambiar_Estado',
-                    label: 'Cambiar Estado',
-                    position: 10 }],
-        selectionField: [{position: 10 }],
+  @UI: { lineItem: [{ position: 15,
+                 importance: #LOW,
+                 label: 'Número de Interno' }],
+      identification: [{ position: 15 }],
+      selectionField: [{position: 15 }]  }
 
-        identification: [{ position: 10 },
-                         { type: #FOR_ACTION,
-                           dataAction: 'Cambiar_Estado',
-                           label: 'Cambiar Estado',
-                           position: 10 }]}
   IncUuid;
 
   @UI: { lineItem: [{ position: 20,
