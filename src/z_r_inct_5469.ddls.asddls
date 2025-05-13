@@ -8,7 +8,7 @@ define root view entity Z_R_INCT_5469
   association [0..1] to ZC_PRIORITY_5469      as _Priority on $projection.Priority = _Priority.PriorityCode
   composition [0..*] of ZC_HISTOTIAL_INC_5469 as _history
 {
-      @UI.lineItem: [{ position: 10, label: 'UUID', importance: #LOW }]
+//      @UI.lineItem: [{ position: 10, label: 'UUID', importance: #LOW }]
   key a.inc_uuid              as IncUuid,
 
       @Search.defaultSearchElement: true
@@ -35,7 +35,7 @@ define root view entity Z_R_INCT_5469
       },
       label: 'Estado'
       }]
-      _Status.StatusCode      as Status,
+      a.status     as Status,
 
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.8
@@ -47,7 +47,7 @@ define root view entity Z_R_INCT_5469
       },
       label: 'Prioridad'
       }]
-      _Priority.PriorityCode  as Priority,
+      a.priority  as Priority,
 
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.8

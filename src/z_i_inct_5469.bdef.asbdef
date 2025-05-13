@@ -1,8 +1,7 @@
-projection;
-strict ( 2 );
+interface;
 use draft;
 
-define behavior for Z_C_INCT_5469
+define behavior for Z_I_INCT_5469 alias _inct
 {
   use create;
   use update;
@@ -16,5 +15,6 @@ define behavior for Z_C_INCT_5469
   use action Discard;
   use action Activate;
   use action Prepare;
+  use association _history;
 
 }

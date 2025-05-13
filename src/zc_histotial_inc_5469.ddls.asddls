@@ -11,7 +11,7 @@
 define view entity ZC_HISTOTIAL_INC_5469
   as select from zdt_inct_h_5469 as a
   association [1..1] to zdt_inct_5469        as _inci on $projection.IncUuid = _inci.inc_uuid
-  association        to parent Z_R_INCT_5469 as _inct on $projection.IncUuid = _inct.IncUuid
+  association to parent Z_R_INCT_5469        as _inct on $projection.IncUuid = _inct.IncUuid
 {
       @UI.lineItem: [{ position: 10, label: 'UUID', importance: #LOW }]
   key a.his_uuid              as HisUuid,

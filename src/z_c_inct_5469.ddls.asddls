@@ -9,7 +9,7 @@ define root view entity Z_C_INCT_5469
 {
 
 
-      @UI.lineItem: [{ position: 10, label: 'UUID', importance: #LOW }]
+      @UI.lineItem: [{ position: 10, label: 'UUID', importance: #HIGH }]
   key IncUuid,
 
 
@@ -33,26 +33,12 @@ define root view entity Z_C_INCT_5469
       @Search.fuzzinessThreshold: 0.8
       @Search.ranking: #MEDIUM
       @EndUserText.label: 'Estado'
-      @Consumption.valueHelpDefinition: [{
-        entity: {
-          name: 'ZC_STATUS_5469',
-          element: 'StatusCode'
-        },
-        label: 'Estado'
-        }]
       Status,
 
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.8
       @Search.ranking: #MEDIUM
       @EndUserText.label: 'Prioridad'
-      @Consumption.valueHelpDefinition: [{
-        entity: {
-          name: 'ZC_PRIORITY_5469',
-          element: 'PriorityCode'
-        },
-        label: 'Prioridad'
-        }]
       Priority,
 
       @Search.defaultSearchElement: true
@@ -81,8 +67,8 @@ define root view entity Z_C_INCT_5469
 
       @Semantics.systemDateTime.lastChangedAt: true
       LastChangedAt,
-      /* Associations */
-      _history,
+//      /* Associations */
+      _history: redirected to composition child Z_C_HISTORIAL_INC_5469,
       _Priority,
       _Status
 }

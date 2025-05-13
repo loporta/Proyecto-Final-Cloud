@@ -4,7 +4,6 @@
 @Metadata.allowExtensions: true
 @Search.searchable: true
 define view entity Z_C_HISTORIAL_INC_5469
-  provider contract transactional_query
   as projection on ZC_HISTOTIAL_INC_5469
 
 {
@@ -50,5 +49,5 @@ define view entity Z_C_HISTORIAL_INC_5469
       LastChangedAt,
       /* Associations */
       _inci,
-      _inct
+      _inct: redirected to parent Z_C_INCT_5469
 }

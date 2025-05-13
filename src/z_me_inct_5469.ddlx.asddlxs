@@ -1,4 +1,4 @@
-@Metadata.layer: #CORE
+@Metadata.layer: #LOCALIZATION
 @UI: { headerInfo:{  typeName: 'Incidente',
                      typeNamePlural: 'Incidentes',
                      title:{ type: #STANDARD,
@@ -11,18 +11,19 @@
 
 annotate entity Z_C_INCT_5469 with
 {
-  @UI.facet: [{ id: 'Detalle_Indicente',
-                purpose: #STANDARD,
-                type: #LINEITEM_REFERENCE,
-                label: 'Detalle Indicente',
-                position: 10}]
+    @UI.facet: [{ id: 'Detalle_Incidente',
+                  purpose: #STANDARD,
+                  type: #IDENTIFICATION_REFERENCE,
+                  label: 'Detalle Indicente',
+                  position: 10}]
 
-  @UI: { lineItem: [{ position: 15,
-                 importance: #LOW,
+  @UI: { lineItem: [{ position: 100,
+                 importance: #HIGH,
                  label: 'Número de Interno' }],
-      identification: [{ position: 15 }],
-      selectionField: [{position: 15 }]  }
-
+      identification: [{ position: 10 }],
+      selectionField: [{position: 10 }]
+  }
+  @UI.hidden: true
   IncUuid;
 
   @UI: { lineItem: [{ position: 20,
@@ -35,29 +36,38 @@ annotate entity Z_C_INCT_5469 with
   @UI: { lineItem: [{ position: 30,
                  importance: #HIGH,
                  label: 'Titulo' }],
-                 identification: [{ position: 30 }] }
+             identification: [{ position: 30 }],
+      selectionField: [{position: 30 }]
+                 }
   Title;
 
   @UI: { lineItem: [{ position: 40,
                importance: #HIGH,
                label: 'Descripción' }],
                 identification: [{ position: 40 }],
-                 selectionField: [{position: 30 }] }
+
+      selectionField: [{position: 40 }] }
 
   Description;
 
+  @Consumption.valueHelpDefinition: [{ entity: {  name: 'ZC_STATUS_5469',
+                                                  element: 'StatusCode' },
+                                      useForValidation: true }]
   @UI: { lineItem: [{ position: 50,
                importance: #HIGH,
                label: 'Estado' }],
                 identification: [{ position: 50 }],
-                selectionField: [{position: 40 }]  }
+                selectionField: [{position: 50 }]  }
   Status;
 
+  @Consumption.valueHelpDefinition: [{ entity: {  name: 'ZC_PRIORITY_5469',
+                                                  element: 'PriorityCode' },
+                                      useForValidation: true }]
   @UI: { lineItem: [{ position: 60,
                importance: #HIGH,
                label: 'Prioridad' }],
                 identification: [{ position: 60 }],
-                selectionField: [{position: 50 }]  }
+                selectionField: [{position: 60 }]  }
   Priority;
 
 
@@ -65,14 +75,14 @@ annotate entity Z_C_INCT_5469 with
              importance: #MEDIUM,
              label: 'Fecha de Creación' }],
                 identification: [{ position: 70 }],
-                selectionField: [{position: 60 }]  }
+                selectionField: [{position: 70 }]  }
   CreationDate;
 
   @UI: { lineItem: [{ position: 80,
              importance: #MEDIUM,
              label: 'Fecha Modificación' }],
                 identification: [{ position: 80 }],
-                selectionField: [{position: 70 }]  }
+                selectionField: [{position: 80 }]  }
 
   ChangedDate;
 

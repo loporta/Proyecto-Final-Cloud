@@ -1,29 +1,26 @@
 managed;
 strict ( 2 );
-//with draft;
-define behavior for Z_R_INCT_5469 alias _inct
+with draft;
+define behavior for Z_R_INCT_5469 //alias <alias_name>
 implementation in class zbp_r_inct_5469_inct unique
 persistent table zdt_inct_5469
-//draft table zdt_inct_5469d
+draft table zdt_inct_5469d
 lock master
-//total etag LocalLastChangedAt
+total etag LocalLastChangedAt
 authorization master ( global, instance )
 
 {
   create;
   update;
   delete;
-
   field ( numbering : managed, readonly ) IncUuid;
   field ( readonly ) IncidentId, Status, LocalCreatedBy, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
   field ( mandatory ) Title, Description, Priority;
 
-
-  //  action ( features : instance, authorization : update ) Cambiar_Estado parameter ZCDS_POP_UP result [1] $self;
+  association _history { create; }
 
   determination setStatus on save { create; }
   determination setModify on modify { create; }
-//  association _history { create; }
 
   validation validar_creacion on save { create; field title, DESCRIPTION, PRIORITY, STATUS; }
   validation validar_campos on save { create; field title, DESCRIPTION, PRIORITY, STATUS; }
@@ -32,17 +29,16 @@ authorization master ( global, instance )
   determine action validarcreacion { validation validar_creacion; }
   determine action validarcampos { validation validar_campos; }
 
-//  draft action Resume;
-//  draft action Edit;
-//  draft action Discard;
-//  draft action Activate optimized;
-//  draft determine action Prepare
-//  {
-//
-//    validation validar_creacion;
-//    validation validar_campos;
-//  }
+  draft action Resume;
+  draft action Edit;
+  draft action Discard;
+  draft action Activate optimized;
+  draft determine action Prepare
+  {
 
+    validation validar_creacion;
+    validation validar_campos;
+  }
   mapping for zdt_inct_5469
     {
       IncUuid            = inc_uuid;
@@ -61,37 +57,38 @@ authorization master ( global, instance )
     }
 }
 
-//define behavior for ZC_HISTOTIAL_INC_5469 alias Historial
-//
-//implementation in class zbp_r_inct_5469_hist unique
-//persistent table zdt_inct_h_5469
-//lock dependent by _inct
-////draft table zdt_inct_h_5469d
-//
-//authorization dependent by _inct
-//
-//{
-//  update;
-//  delete;
-//  field ( numbering : managed, readonly ) HisUuid;
-//  field ( readonly ) IncUuid, LocalCreatedBy, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
-//  field ( features : instance ) NewStatus;
-//  action ( features : instance, authorization : update ) Cambiar_Estado parameter ZCDS_POP_UP result [1] $self;
-//
-//  association _inct;
-//
-//  mapping for zdt_inct_h_5469
-//    {
-//      HisUuid            = his_uuid;
-//      IncUuid            = inc_uuid;
-//      HisId              = his_id;
-//      PreviousStatus     = previous_status;
-//      NewStatus          = new_status;
-//      Text               = text;
-//      LocalCreatedBy     = local_created_by;
-//      LocalCreatedAt     = local_created_at;
-//      LocalLastChangedBy = local_last_changed_by;
-//      LocalLastChangedAt = local_last_changed_at;
-//      LastChangedAt      = last_changed_at;
-//    }
-//}
+
+
+define behavior for ZC_HISTOTIAL_INC_5469 alias Historial
+
+implementation in class zbp_r_inct_5469_hist unique
+persistent table zdt_inct_h_5469
+lock dependent by _inct
+draft table zdt_inct_h_5469d
+
+authorization dependent by _inct
+
+{
+  update;
+  delete;
+  field ( numbering : managed, readonly ) HisUuid;
+  field ( readonly ) IncUuid, LocalCreatedBy, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
+  field ( features : instance ) NewStatus;
+  action ( features : instance, authorization : update ) Cambiar_Estado parameter ZCDS_POP_UP result [1] $self;
+
+ association _inct;
+  mapping for zdt_inct_h_5469
+    {
+      HisUuid            = his_uuid;
+      IncUuid            = inc_uuid;
+      HisId              = his_id;
+      PreviousStatus     = previous_status;
+      NewStatus          = new_status;
+      Text               = text;
+      LocalCreatedBy     = local_created_by;
+      LocalCreatedAt     = local_created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+    }
+}

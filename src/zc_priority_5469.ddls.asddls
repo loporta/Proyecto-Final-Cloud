@@ -12,6 +12,7 @@ define view entity ZC_PRIORITY_5469
   as select from zdt_priority5469
 {
       @ObjectModel.text.element: ['PriorityDescription']
+      @Search.defaultSearchElement: true
   key priority_code        as PriorityCode,
       @Semantics.text: true
       @Search.defaultSearchElement: true

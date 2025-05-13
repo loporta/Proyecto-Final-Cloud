@@ -12,6 +12,7 @@ define view entity ZC_STATUS_5469
   as select from zdt_status_5469
 {
       @ObjectModel.text.element: ['StatusDescription']
+      @Search.defaultSearchElement: true
   key status_code        as StatusCode,
       @Semantics.text: true
       @Search.defaultSearchElement: true
