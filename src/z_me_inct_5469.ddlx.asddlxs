@@ -11,19 +11,27 @@
 
 annotate entity Z_C_INCT_5469 with
 {
-    @UI.facet: [{ id: 'Detalle_Incidente',
-                  purpose: #STANDARD,
-                  type: #IDENTIFICATION_REFERENCE,
-                  label: 'Detalle Indicente',
-                  position: 10}]
+//  @UI.facet: [{ id: 'Detalle_Indicente',
+//                purpose: #STANDARD,
+//                type: #LINEITEM_REFERENCE,
+//                label: 'Detalle Incidente ',
+//                position: 10}]
 
-  @UI: { lineItem: [{ position: 100,
-                 importance: #HIGH,
-                 label: 'Número de Interno' }],
-      identification: [{ position: 10 }],
-      selectionField: [{position: 10 }]
-  }
-  @UI.hidden: true
+
+  @UI.lineItem: [{
+    type: #FOR_ACTION,
+    dataAction: 'Cambiar_Estado1',
+    label: 'Cambiar Estado1',
+    position: 10
+  }]
+  @UI.identification: [{
+    type: #FOR_ACTION,
+    dataAction: 'Cambiar_Estado1',
+    label: 'Cambiar Estado1',
+    position: 10
+  }]
+  
+
   IncUuid;
 
   @UI: { lineItem: [{ position: 20,

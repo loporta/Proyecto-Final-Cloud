@@ -27,20 +27,34 @@ annotate entity Z_C_HISTORIAL_INC_5469 with
                 position: 10}]
 
 
-  @UI: { lineItem:  [{ position: 10,
-          importance: #HIGH,
-          label: '' },
-        { type: #FOR_ACTION,
-          dataAction: 'Cambiar_Estado',
-          label: 'Cambiar Estado',
-          position: 10 }],
-        selectionField: [{position: 10 }],
+//  @UI: { lineItem:  [{ position: 10,
+//          importance: #HIGH,
+//          label: '' },
+//        { type: #FOR_ACTION,
+//          dataAction: 'Cambiar_Estado',
+//          label: 'Cambiar Estado',
+//          position: 10 }],
+//        selectionField: [{position: 10 }],
+//
+//        identification: [{ position: 10 },
+//               { type: #FOR_ACTION,
+//                 dataAction: 'Cambiar_Estado',
+//                 label: 'Cambiar Estado',
+//                 position: 10 }]}
 
-        identification: [{ position: 10 },
-               { type: #FOR_ACTION,
-                 dataAction: 'Cambiar_Estado',
-                 label: 'Cambiar Estado',
-                 position: 10 }]}
+  // Acción en línea (Cambiar Estado)
+  @UI.lineItem: [{
+    type: #FOR_ACTION,
+    dataAction: 'Cambiar_Estado',
+    label: 'Cambiar Estado',
+    position: 1
+  }]
+  @UI.identification: [{
+    type: #FOR_ACTION,
+    dataAction: 'Cambiar_Estado',
+    label: 'Cambiar Estado',
+    position: 1
+  }]
 
   HisUuid;
 
@@ -108,3 +122,97 @@ annotate entity Z_C_HISTORIAL_INC_5469 with
   LastChangedAt;
 
 }
+////////@UI.createHidden: true
+////////@Metadata.layer: #CORE
+////////@UI: {
+////////  headerInfo: {
+////////    typeName: 'Historial de Incidente',
+////////    typeNamePlural: 'Historial de Incidentes',
+////////    description.type: #STANDARD,
+////////    title: {
+////////      type: #STANDARD,
+////////      value: 'HisId'
+////////    }
+////////  },
+////////  presentationVariant: [{
+////////    sortOrder: [{ by: 'HisId', direction: #ASC }],
+////////    visualizations: [{ type: #AS_LINEITEM }]
+////////  }]
+////////}
+////////annotate entity Z_C_HISTORIAL_INC_5469 with {
+////////
+////////  @UI.facet: [{
+////////    id: 'Detalle_Incidente',
+////////    purpose: #STANDARD,
+////////    type: #LINEITEM_REFERENCE,
+////////    label: 'Detalle Historial',
+////////    position: 10
+////////  }]
+////////
+////////  // Acción en línea (Cambiar Estado)
+////////  @UI.lineItem: [{
+////////    type: #FOR_ACTION,
+////////    dataAction: 'Cambiar_Estado',
+////////    label: 'Cambiar Estado',
+////////    position: 1
+////////  }]
+////////  @UI.identification: [{
+////////    type: #FOR_ACTION,
+////////    dataAction: 'Cambiar_Estado',
+////////    label: 'Cambiar Estado',
+////////    position: 1
+////////  }]
+////////  dummy_field_for_action; // Este campo puede ser un campo auxiliar (de tipo `abap.boolean`) si se necesita que la acción esté vinculada a algo.
+////////
+////////  // === Campos ===
+////////
+////////  @UI.hidden: true
+////////  HisUuid;
+////////
+////////  @UI.hidden: true
+////////  IncUuid;
+////////
+////////  @UI: {
+////////    lineItem: [{ position: 10, importance: #HIGH, label: 'Id Historial' }],
+////////    identification: [{ position: 10 }],
+////////    selectionField: [{ position: 10 }]
+////////  }
+////////  HisId;
+////////
+////////  @UI: {
+////////    lineItem: [{ position: 20, importance: #HIGH, label: 'Estado' }],
+////////    identification: [{ position: 20 }],
+////////    selectionField: [{ position: 20 }]
+////////  }
+////////  PreviousStatus;
+////////
+////////  @UI: {
+////////    lineItem: [{ position: 30, importance: #HIGH, label: 'Nuevo Estado' }],
+////////    identification: [{ position: 30 }],
+////////    selectionField: [{ position: 30 }]
+////////  }
+////////  NewStatus;
+////////
+////////  @UI: {
+////////    lineItem: [{ position: 40, importance: #HIGH, label: 'Descripción' }],
+////////    identification: [{ position: 40 }],
+////////    selectionField: [{ position: 40 }]
+////////  }
+////////  Text;
+////////
+////////  @UI.hidden: true
+////////  LocalCreatedBy;
+////////
+////////  @UI.hidden: true
+////////  LocalCreatedAt;
+////////
+////////  @UI.hidden: true
+////////  LocalLastChangedBy;
+////////
+////////  @UI.hidden: true
+////////  LocalLastChangedAt;
+////////
+////////  @UI.hidden: true
+////////  LastChangedAt;
+////////
+////////}

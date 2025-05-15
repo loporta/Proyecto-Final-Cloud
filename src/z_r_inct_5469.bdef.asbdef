@@ -14,9 +14,10 @@ authorization master ( global, instance )
   update;
   delete;
   field ( numbering : managed, readonly ) IncUuid;
-  field ( readonly ) IncidentId, Status, LocalCreatedBy, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
-  field ( mandatory ) Title, Description, Priority;
+  field ( readonly ) LocalCreatedBy, LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
+  field ( mandatory ) Title, Description, Priority, Status, IncidentId;
 
+  action Cambiar_Estado1 parameter ZCDS_POP_UP result [1] $self;
   association _history { create; }
 
   determination setStatus on save { create; }

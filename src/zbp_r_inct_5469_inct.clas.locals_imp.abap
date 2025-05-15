@@ -18,6 +18,8 @@ CLASS lhc_Z_R_INCT_5469 DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS validar_creacion FOR VALIDATE ON SAVE
       IMPORTING keys FOR z_r_inct_5469~validar_creacion.
+    METHODS cambiar_estado1 FOR MODIFY
+      IMPORTING keys FOR ACTION z_r_inct_5469~cambiar_estado1 RESULT result.
 
 ENDCLASS.
 
@@ -39,6 +41,9 @@ CLASS lhc_Z_R_INCT_5469 IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD validar_creacion.
+  ENDMETHOD.
+
+  METHOD Cambiar_Estado1.
   ENDMETHOD.
 
 ENDCLASS.
